@@ -24,7 +24,7 @@ app.use(express.static('public'));
 
 // BODY-PARSER MIDDLEWARE
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.JSON());
+app.use(bodyParser.json());
 
 // EXPRESS-SESSION MIDDLEWARE
 app.use(

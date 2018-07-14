@@ -1,0 +1,28 @@
+<% include ../layout/adminheader %>
+<br>
+<h2 class="page-title">Add a Page</h2>
+<a href="/admin/pages" class="btn btn-primary">Back to all pages</a>
+<br><br>
+
+<form action="/admin/pages/add-page" method="post">
+
+    <div class="form-group">
+        <label for="1">Title</label>
+        <input id="1" type="text" class="form-control" name="title" value="<%=title%>" placeholder="Title">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+
+    <div class="form-group">
+        <label for="">Slug</label>
+        <input type="text" class="form-control" name="slug" value="<%=slug%>" placeholder="Slug">
+    </div>
+
+    <div class="form-group">
+        <label for="a">Content</label>
+        <textarea id="a" rows="7" cols="121" name="content" placeholder="Content"><%=content%></textarea>
+    </div>
+
+    <button class="btn btn-default">Submit</button>
+</form>
+
+<% include ../layout/adminfooter %>
