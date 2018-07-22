@@ -5,12 +5,15 @@ var mongoose = require('mongoose');
 var config = require('./config/database');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+// req flash
+// var cookieParser = require('cookie-parser');
+// var flash = require('req-flash');
 
 // CONNECT TO MONGODB
 mongoose.connect(config.database);
 
 var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
+db.on('error', console.error.bind(console, 'database connection error:'));
 db.once('open', function() {
 	console.log('we are connected to the databse');
 });
@@ -42,6 +45,9 @@ app.use(function(req, res, next) {
 	next();
 });
 
+// app.use(cookieParser());
+// app.use(flash());
+
 // SET ROUTES
 
 var pages = require('./routes/pages');
@@ -49,6 +55,8 @@ var adminPages = require('./routes/admin_pages');
 
 app.use('/', pages);
 app.use('/admin/pages', adminPages);
+
+app.locals.errors = null;
 
 // starting the server
 app.listen(3000, function() {
